@@ -26,13 +26,10 @@ const hide = (elem) => {
 let activeNote = {};
 
 const getNotes = () =>
-  fetch('file:///C:/Users/MyAge/code/bootcamp/DU-VIRT-FSF-PT-12-2022-U-LOLC/11-Express/02-Challenge/Develop/public/api/notes', {
+  fetch('/api/notes', {
     method: 'GET',
-    mode: "cors",
     headers: {
-      'Content-Type': 'application/json', 
-      'Access-Control-Allow-Origin':'*'
-
+      'Content-Type': 'application/json',
     },
   });
 
@@ -122,7 +119,6 @@ const handleRenderSaveBtn = () => {
 // Render the list of note titles
 const renderNoteList = async (notes) => {
   let jsonNotes = await notes.json();
-  console.log(jsonNotes)
   if (window.location.pathname === '/notes') {
     noteList.forEach((el) => (el.innerHTML = ''));
   }
