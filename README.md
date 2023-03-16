@@ -9,17 +9,18 @@ This application allows the user to take notes with titles and have them saved.
 
 
 ### <u> Screenshot: </u>
-![Notetaker Application](./images/ABC-Circle.jpg)
-![SVG Logo Generator Screenshot](./images/ABC-%20Circle%20HTML.jpg)
+![Notetaker Application](./public/assets/images/peaceful-peak-50724.herokuapp.com_notes%20(1).png)
+![SVG Logo Generator Screenshot](./public/assets/images/peaceful-peak-50724.herokuapp.com_notes.png)
 <br /><br />
 
     
 ### <u> Deployable Link to Website: </u>
 
-https://drive.google.com/file/d/1xUWtt_BgxOVZmjmrivYhvyOfBmpolkwn/view
+https://peaceful-peak-50724.herokuapp.com
+
 ### <u> Support:  </u>
 
-- [MDN](https://developer.mozilla.org/en-US/)  
+- [MDN](https://developer.mozilla.org/en-US/) 
 
 - [Google](https://Google.com)
 
