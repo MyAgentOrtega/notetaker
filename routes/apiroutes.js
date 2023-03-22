@@ -12,24 +12,52 @@ router.get("/notes",(req,res)=>{
         res.json(JSON.parse(data))
       });
 })
-router.post("/notes",(req,res)=>{
-    console.log("this is api post route")
+router.delete("/notes/:id",(req,res)=>{
+    console.log("delete route")
     fs.readFile('./db/db.json', 'utf8', (err, data) => {
         if (err) {
           console.error(err);
           return;
         }
-        let currentNotes = JSON.parse(data)
-    currentNotes.push(req.body)
+        let currentNotes = JSON.parse(data) || []
         console.log("this is from currentNotes",currentNotes)
-        fs.writeFile('./db/db.json', JSON.stringify(currentNotes), err => {
+        let tempNotesList = []
+        for (let index = 0; index < currentNotes.length; index++) {
+          if(currentNotes[index].id != req.params.id){
+            tempNotesList.push(currentNotes[index])
+          }
+        }
+        fs.writeFile('./db/db.json', JSON.stringify(tempNotesList), err => {
             if (err) {
               console.error(err);
             }
             // file written successfully
-            res.json({message: "Your note has been added!"})
+           // res.json({message: "Your note has been added!"})
           });
+          res.json(tempNotesList)
       });
 })
+router.post("/notes",(req,res)=>{
+  console.log("this is api post route")
+  fs.readFile('./db/db.json', 'utf8', (err, data) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      let currentNotes = JSON.parse(data)
+      let note = req.body
+      note.id = uuidv4()
+  currentNotes.push(note)
+      console.log("this is from currentNotes",currentNotes)
+      fs.writeFile('./db/db.json', JSON.stringify(currentNotes), err => {
+          if (err) {
+            console.error(err);
+          }
+          // file written successfully
+          res.json({message: "Your note has been added!"})
+        });
+    });
+})
+
 
 module.exports = router
