@@ -1,6 +1,7 @@
 const router = require("express").Router()
 const fs = require("fs")
 const database = require("../db/db.json")
+const { v4: uuidv4 } = require('uuid');
 router.get("/notes",(req,res)=>{
     console.log("api route test")
     fs.readFile('./db/db.json', 'utf8', (err, data) => {
